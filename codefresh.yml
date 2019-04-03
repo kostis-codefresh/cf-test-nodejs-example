@@ -1,0 +1,12 @@
+version: '1.0'
+steps:
+  build_image:
+    title: Build nest test docker image
+    type: build
+    image_name: rbo/nest-test
+    dockerfile: Dockerfile
+  push_to_registry:
+    title: Pushing to Nexus
+    type: push
+    candidate: '${{build_image}}'
+    tag: 'cf-nest-test'
